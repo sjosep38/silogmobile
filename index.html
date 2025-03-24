@@ -110,13 +110,214 @@ p {
 }
 </style>
 <body>
-    <div class="split-container">
-        <!-- Left Panel -->
-        <div class="left-panel">
-            <h1>Left Panel</h1>
-            <p>This is the left panel.</p>
-            <button id="openModalBtn">Open Modal</button>
+<div class="split-container">
+    <div class="left-panel">
+	<div class="scroll-box">
+<h2>- SILOG MENU -</h2>
+            <center>
+			<table>
+                <tr>
+    <td><div class="product" data-product="HAMSILOG" onclick="addProduct('HAMSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-HAMSILOG">HAMSILOG ₱70</div>
+            <img class="logo" src="SHORT/HAMSILOG.jpg">
+            <div id="sold-out-HAMSILOG" class="sold-out-message">SOLD OUT</div>
         </div>
+    </td>
+    <td><div class="product" data-product="TAPSILOG" onclick="addProduct('TAPSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-TAPSILOG">TAPSILOG ₱70</div>
+            <img class="logo" src="SHORT/TAPSILOG.jpg">
+           <div id="sold-out-TAPSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+    <td><div class="product" data-product="PORKSILOG" onclick="addProduct('PORKSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-PORKSILOG">PORKSILOG ₱70</div>
+            <img class="logo" src="SHORT/PORKSILOG.jpg">
+           <div id="sold-out-PORKSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+    <td><div class="product" data-product="LONGSILOG" onclick="addProduct('LONGSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-LONGSILOG">LONGSILOG ₱70</div>
+            <img class="logo" src="SHORT/LONGSILOG.jpg">
+           <div id="sold-out-LONGSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+	
+	
+    <td><div class="product" data-product="BANGSILOG" onclick="addProduct('BANGSILOG', 70.00)">
+           <div class="sold-out1" id="sold-out1-BANGSILOG">BANGSILOG ₱40</div>
+            <img class="logo" src="SHORT/BANGSILOG.jpg">
+            <div id="sold-out-BANGSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+	</tr>
+	
+	<tr>
+    <td><div class="product" data-product="ADOBOSILOG" onclick="addProduct('ADOBOSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-ADOBOSILOG">ADOBOSILOG ₱70</div>
+            <img class="logo" src="SHORT/ADOBOSILOG.jpg">
+			<div id="sold-out-ADOBOSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+    <td><div class="product" data-product="BACSILOG" onclick="addProduct('BACSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-BACSILOG">BACSILOG ₱70</div>
+            <img class="logo" src="SHORT/BACSILOG.jpg">
+			<div id="sold-out-BACSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+	    <td><div class="product" data-product="SPAMSILOG" onclick="addProduct('SPAMSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-SPAMSILOG">SPAMBOSILOG ₱70</div>
+            <img class="logo" src="SHORT/SPAMSILOG.jpg">
+			<div id="sold-out-SPAMSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+    <td><div class="product" data-product="HOTSILOG" onclick="addProduct('HOTSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-HOTSILOG">HOTSILOG ₱70</div>
+            <img class="logo" src="SHORT/HOTSILOG.jpg">
+			<div id="sold-out-HOTSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+	 <td><div class="product" data-product="TOSILOG" onclick="addProduct('TOSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-TOSILOG">TOSILOG ₱70</div>
+            <img class="logo" src="SHORT/TOSILOG.jpg">
+			<div id="sold-out-TOSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+</tr>
+            </table></center>
+			<table>
+			<BR>
+            <h2>- BEVERAGES -</h2>
+            	<tr>
+					<td><div class="product" data-product="COKE"  onclick="addProduct('COKE 330ML', 20.00)">
+					<div class="sold-out1" id="sold-out1-COKE">COKE 330ML ₱20</div>
+						<img class="logo" src="DRINKS/COKE.png">
+						<div id="sold-out-COKE" class="sold-out-message">SOLD OUT</div>
+					</div></td>
+					<td><div class="product" onclick="addProduct('SPRITE 330ML', 18.00)">
+					<div class="sold-out1" id="sold-out1-SPRITE">SPRITE 330ML ₱18</div>
+						<img class="logo" src="DRINKS/SPRITE.jpg">
+						<div id="sold-out-SPRITE" class="sold-out-message">SOLD OUT</div>
+					</div></td>
+					<td><div class="product" onclick="addProduct('M.DEW 355ML', 21.00)">
+					<div class="sold-out1" id="sold-out1-MOUNTAIN DEW">MOUNTAIN DEW 355ML ₱21</div>
+						<img class="logo" src="DRINKS/MOUNTAIN DEW.jpg">
+						<div id="sold-out-MOUNTAIN DEW" class="sold-out-message">SOLD OUT</div>
+					</div></td>
+					<td><div class="product" onclick="addProduct('ROYAL 1L', 35.00)">
+					<div class="sold-out1" id="sold-out1-ROYAL">ROYAL 1L ₱35</div>
+						<img class="logo" src="DRINKS/ROYAL.jpg">
+						<div id="sold-out-ROYAL" class="sold-out-message">SOLD OUT</div>
+					</div></td>
+					<td><div class="product" onclick="addProduct('RC COLA 1L ', 30.00)">
+					<div class="sold-out1" id="sold-out1-RC COLA">RC COLA 1L ₱30</div>
+						<img class="logo" src="DRINKS/RC COLA.png">
+						<div id="sold-out-RC COLA" class="sold-out-message">SOLD OUT</div>
+				</tr>
+				<tr>
+					</div></td>
+					<td><div class="product" onclick="addProduct('PEPSI 330ML', 20.00)">
+					<div class="sold-out1" id="sold-out1-PEPSI COLA">PEPSI COLA 330ML ₱20</div>
+						<img class="logo" src="DRINKS/PEPSI COLA.jpg">
+						<div id="sold-out-PEPSI COLA" class="sold-out-message">SOLD OUT</div>
+					</div></td>
+					<td><div class="product" onclick="addProduct('POP 330ML', 16.00)">
+					<div class="sold-out1" id="sold-out1-POP COLA">POP COLA 300ML ₱16</div>
+						<img class="logo" src="DRINKS/POP COLA.png">
+						<div id="sold-out-POP COLA" class="sold-out-message">SOLD OUT</div>
+					</div></td>
+				</tr>	
+					</tr>
+					<table>
+					<BR>
+					<h2>- SHORT ORDER -</h2>
+                <tr>
+                    <td><div class="product" onclick="addProduct('PCANTON', 300.00)">
+					<div class="sold-out1" id="sold-out1-PANCIT CANTON">PANCIT CANTON Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/PANCIT CANTON.jpg">
+						<div id="sold-out-PANCIT CANTON" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('BIKO', 300.00)">
+					<div class="sold-out1" id="sold-out1-BIKO">BIKO Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/BIKO.jpg">
+						<div id="sold-out-BIKO" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('CARBONARA', 300.00)">
+					<div class="sold-out1" id="sold-out1-CARBONARA">CARBONARA Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/CARBONARA.jpg">
+						<div id="sold-out-CARBONARA" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('SPAGETTI', 300.00)">
+					<div class="sold-out1" id="sold-out1-SPAGETTI">SPAGETTI Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/SPAGETTI.jpg">
+						<div id="sold-out-SPAGETTI" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('FRIES', 300.00)">
+					<div class="sold-out1" id="sold-out1-FRIES">FRIES Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/FRIES.jpg">
+						<div id="sold-out-FRIES" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+				</tr>
+					<tr>
+				               
+                    <td><div class="product" onclick="addProduct('LECHON BELLY', 300.00)">
+					<div class="sold-out1" id="sold-out1-LECHON BELLY">LBELLY Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/LBELLY.jpg">
+						<div id="sold-out-LECHON BELLY" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('SUMAN', 300.00)">
+					<div class="sold-out1" id="sold-out1-SUMAN">SUMAN Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/SUMAN.jpg">
+						<div id="sold-out-SUMAN" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					
+					<td><div class="product" onclick="addProduct('BAKEMAC', 300.00)">
+					<div class="sold-out1" id="sold-out1-BAKEMAC">BAKEMAC Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/BAKEMAC.jpg">
+						<div id="sold-out-BAKEMAC" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('PUTO', 300.00)">
+					<div class="sold-out1" id="sold-out1-PUTO">PUTO Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/PUTO.jpg">
+						<div id="sold-out-PANCIT CANTON" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+					<td><div class="product" onclick="addProduct('PALABOK', 300.00)">
+					<div class="sold-out1" id="sold-out1-PALABOK">PALABOK Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/PALABOK.jpg">
+						<div id="sold-out-PALABOK" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+			</tr>
+					<tr>
+                    <td><div class="product" onclick="addProduct('LSHANGHAI', 300.00)">
+					<div class="sold-out1" id="sold-out1-PANCIT CANTON">LUMPIA SHANGHAI Good for 15pax ₱300.00</div>
+                        <img class="logo" src="SHORT/LUMPIA.jpg">
+						<div id="sold-out-LUMPIA SHANGHAI" class="sold-out-message">SOLD OUT</div>
+                    </div></td>
+
+
+    <td><div class="product" data-product="HAMSILOG" onclick="addProduct('HAMSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-PAKBET">HAMSILOG ₱70</div>
+            <img class="logo" src="SILOG/HAMSILOG.jpg">
+            <div id="sold-out-HAMSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+    <td><div class="product" data-product="TAPSILOG" onclick="addProduct('TAPSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-TAPSILOG">TAPSILOG ₱70</div>
+            <img class="logo" src="SILOG/TAPSILOG.jpg">
+           <div id="sold-out-TAPSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+    <td><div class="product" data-product="PORKSILOG" onclick="addProduct('PORKSILOG', 70.00)">
+            <div class="sold-out1" id="sold-out1-PORKSILOG">PORKSILOG ₱70</div>
+            <img class="logo" src="SILOG/PORKSILOG.jpg">
+           <div id="sold-out-PORKSILOG" class="sold-out-message">SOLD OUT</div>
+        </div>
+    </td>
+				</tr>
+            </table></center>
+            </table>
+    </div>
+	</div>
+	
 
         <!-- Right Panel -->
         <div class="right-panel">
