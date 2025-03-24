@@ -1,76 +1,173 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Layout Split</title>
+    <title>Layout Example</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
+/* Reset default margins */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background-image: url('menu/bg.JPG');
+  background-size: cover; /* Makes the background cover the entire page */
+  background-position: center; /* Centers the image */
 }
 
-.container {
-    display: flex;
-    width: 100%;
-    height: 100%;
+/* Split Container */
+.split-container {
+  display: flex;
+  height: 100%;
 }
 
-.left {
-    width: 70%;
-    background-color: lightblue;
-    padding: 20px;
-    box-sizing: border-box;
+.left-panel {
+  flex: 7; /* Takes up 70% */
+  background-color: #3498db; /* Blue */
+  color: white;
+  padding: 20px;
 }
 
-.right {
-    width: 30%;
-    background-color: lightgreen;
-    padding: 20px;
-    box-sizing: border-box;
+.right-panel {
+  flex: 3; /* Takes up 30% */
+  background-color: #2ecc71; /* Green */
+  color: white;
+  padding: 20px;
 }
 
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .left, .right {
-        width: 100%;
-    }
-
-    .left {
-        order: 1; /* Ensures the left section comes before the right on mobile */
-    }
-
-    .right {
-        order: 2; /* Ensures the right section comes after the left on mobile */
-    }
+h1 {
+  font-size: 2rem;
 }
 
+p {
+  font-size: 1rem;
+}
+
+/* Modal Styles */
+.modala {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+}
+
+.modala-content {
+  position: relative;
+  top: 20%;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  width: 80%;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+/* Grid Layout */
+.containerx {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.column1, .column2, .column3 {
+  border: solid 1px black;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f0f0f0;
+}
+
+.column1 {
+  color: red;
+}
+
+.column2, .column3 {
+  color: green;
+}
 </style>
 <body>
-    <div class="container">
-        <div class="left">
-            <p></p>
+    <div class="split-container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <h1>Left Panel</h1>
+            <p>This is the left panel.</p>
+            <button id="openModalBtn">Open Modal</button>
         </div>
-        <div class="right">
-            <p></p>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <h1>Right Panel</h1>
+            <p>This is the right panel.</p>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modala" id="modal">
+        <div class="modala-content">
+            <span class="close" id="closeModalBtn">&times;</span>
+            <h2>Modal Content</h2>
+            <p>This is a modal.</p>
+        </div>
+    </div>
+
+    <!-- Grid Container -->
+    <div class="containerx">
+        <div class="column1">Column 1 (Red Text)</div>
+        <div class="column2">Column 2 (Green Text)</div>
+        <div class="column3">Column 3</div>
+    </div>
+
+    <script>
+	// Get the modal
+const modal = document.getElementById('modal');
+
+// Get the button that opens the modal
+const openModalBtn = document.getElementById('openModalBtn');
+
+// Get the <span> element that closes the modal
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// When the user clicks the button, open the modal
+openModalBtn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+closeModalBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+}
+
+	</script>
 </body>
 </html>
