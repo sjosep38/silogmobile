@@ -48,8 +48,17 @@ body {
     .container {
         flex-direction: column;
     }
+
     .left, .right {
         width: 100%;
+    }
+
+    .left {
+        order: 1; /* Ensures the left section comes before the right on mobile */
+    }
+
+    .right {
+        order: 2; /* Ensures the right section comes after the left on mobile */
     }
 }
 
