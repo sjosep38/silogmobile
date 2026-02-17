@@ -165,7 +165,6 @@ body {
 
 /* ================= CART ================= */
 .cart {
-	position: fixed;
     flex: 1;
     background: #1a1a1a;
     padding: 20px;
@@ -345,59 +344,6 @@ body {
 </head>
 
 <body>
-
-
-<!-- HEADER 
-<div class="header">
-    <div class="brand">
-        <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
-        <div>
-            <h1>PizzaHub</h1>
-            <span>Point of Sale System</span>
-        </div>
-    </div>
-</div>
-
-<div class="main-wrapper">-->
-
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <div>🍕</div>
-        <div>🍔</div>
-        <div>🥤</div>
-    </div>
-
-    <div class="container">
-
-        <!-- PRODUCTS -->
-        <div class="products-section">
-
-            <div class="categories">
-                <div class="category active" onclick="filterCategory('All', event)">All</div>
-                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
-                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
-				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
-            </div>
-
-            <div class="products" id="productList"></div>
-
-        </div>
-
-        <!-- CART -->
-        <div class="cart">
-            <h2>Cart</h2>
-            <div class="cart-items" id="cartItems"></div>
-
-            <div class="summary">
-                <div><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-                <div><span>Tax (5%)</span><span id="tax">$0.00</span></div>
-                <div><strong>Total</strong><strong id="total">$0.00</strong></div>
-            </div>
-
-            <button class="checkout-btn" onclick="checkout()">Proceed</button>
-        </div>
-
-    </div>
 <!-- PAYMENT SECTION -->
 <div class="payment" id="paymentSection" style="display:none;">
     <h2>Payment</h2>
@@ -439,6 +385,59 @@ body {
         <button class="confirm-btn" onclick="confirmCashPayment()">Confirm</button>
     </div>
 </div>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="brand">
+        <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
+        <div>
+            <h1>PizzaHub</h1>
+            <span>Point of Sale System</span>
+        </div>
+    </div>
+</div>
+
+<div class="main-wrapper">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div>🍕</div>
+        <div>🍔</div>
+        <div>🥤</div>
+    </div>
+
+    <div class="container">
+
+        <!-- PRODUCTS -->
+        <div class="products-section">
+
+            <div class="categories">
+                <div class="category active" onclick="filterCategory('All', event)">All</div>
+                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
+                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
+				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
+            </div>
+
+            <div class="products" id="productList"></div>
+
+        </div>
+
+        <!-- CART -->
+        <div class="cart">
+            <h2>Cart</h2>
+            <div class="cart-items" id="cartItems"></div>
+
+            <div class="summary">
+                <div><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+                <div><span>Tax (5%)</span><span id="tax">$0.00</span></div>
+                <div><strong>Total</strong><strong id="total">$0.00</strong></div>
+            </div>
+
+            <button class="checkout-btn" onclick="checkout()">Proceed</button>
+        </div>
+
+    </div>
+
 
 </div>
 
