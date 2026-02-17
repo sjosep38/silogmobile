@@ -33,7 +33,6 @@ body {
     display: flex;
     align-items: center;
     padding: 10px 10px;
-    
     z-index: 1000;
 }
 
@@ -55,6 +54,47 @@ body {
     font-size: 12px;
     color: gray;
 }
+
+.header {
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.brand {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.categories {
+  display: flex;
+  gap: 10px; /* space between items */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* smooth scroll for iOS */
+  padding: 0 10px;
+}
+
+.categories::-webkit-scrollbar {
+  display: none; /* hide scrollbar for cleaner look */
+}
+
+.category {
+  flex: 0 0 auto; /* prevent shrinking */
+  padding: 8px 16px;
+  background: #f2f2f2;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap; /* prevent text wrap */
+  transition: background 0.2s;
+}
+
+.category.active,
+.category:hover {
+  background: #ff6b6b; /* highlight active/hover */
+  color: #fff;
+}
+
 
 /* =============== MAIN WRAPPER =============== */
 .main-wrapper {
@@ -348,20 +388,18 @@ body {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
-    <div class="brand">
-            <div class="categories">
-                <!--<div class="category active" onclick="filterCategory('All', event)">All</div>-->
-                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
-                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
-				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
-				                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
-                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
-				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
-            </div>
-        </div>
+  <div class="brand">
+    <div class="categories">
+      <div class="category active" onclick="filterCategory('All', event)">All</div>
+      <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
+      <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
+      <div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
+      <div class="category" onclick="filterCategory('Special', event)">Halo</div>
+      <div class="category" onclick="filterCategory('Coffee', event)">Coffee</div>
+      <div class="category" onclick="filterCategory('Fried', event)">Fried</div>
     </div>
+  </div>
 </div>
 
 <div class="main-wrapper">
