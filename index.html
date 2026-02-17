@@ -252,7 +252,7 @@ body {
 
 .payment-total h1 {
     color: orange;
-    margin-top: 10px;
+   
 }
 
 .payment-methods {
@@ -344,49 +344,8 @@ body {
 </head>
 
 <body>
-<!-- PAYMENT SECTION -->
-<div class="payment" id="paymentSection" style="display:none;">
-    <h2>Payment</h2>
 
-    <div class="payment-total">
-        <h3>Total Amount</h3>
-        <h1 id="paymentTotal">$0.00</h1>
-    </div>
-
-    <div class="payment-methods">
-        <button onclick="selectPayment('Cash', event)">💵 Cash</button>
-        <button onclick="selectPayment('Card', event)">💳 Card</button>
-    </div>
-
-    <!-- CASH FORM -->
-    <div id="cashForm" style="display:none; margin-top:20px;">
-        <label>Cash Received:</label>
-        <input type="number" id="cashInput" placeholder="Enter cash amount" 
-               oninput="calculateChange()" style="width:100%;padding:8px;margin-top:5px;border-radius:6px;border:none;">
-        
-        <div style="margin-top:10px;">
-            <strong>Change:</strong> <span id="changeAmount">$0.00</span>
-        </div>
-    </div>
-
-    <!-- CARD QR -->
-    <div id="cardQR" style="display:none; text-align:center; margin-top:20px;">
-        <p>Scan QR to Pay</p>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PizzaPOSPayment" width="200">
-        <br><br>
-        <button onclick="simulateCardPayment()" 
-                style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;">
-            I've Paid
-        </button>
-    </div>
-
-    <div class="payment-actions">
-        <button class="back-btn" onclick="goBack()">⬅ Back</button>
-        <button class="confirm-btn" onclick="confirmCashPayment()">Confirm</button>
-    </div>
-</div>
-
-<!-- HEADER -->
+<!-- HEADER
 <div class="header">
     <div class="brand">
         <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
@@ -395,7 +354,7 @@ body {
             <span>Point of Sale System</span>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="main-wrapper">
 
@@ -437,6 +396,47 @@ body {
         </div>
 
     </div>
+<!-- PAYMENT SECTION -->
+<div class="payment" id="paymentSection" style="display:none;">
+    <h2>Payment</h2>
+
+    <div class="payment-total">
+        <h3>Total Amount</h3>
+        <h1 id="paymentTotal">$0.00</h1>
+    </div>
+
+    <div class="payment-methods">
+        <button onclick="selectPayment('Cash', event)">💵 Cash</button>
+        <button onclick="selectPayment('Card', event)">💳 Card</button>
+    </div>
+
+    <!-- CASH FORM -->
+    <div id="cashForm" style="display:none; margin-top:20px;">
+        <label>Cash Received:</label>
+        <input type="number" id="cashInput" placeholder="Enter cash amount" 
+               oninput="calculateChange()" style="width:100%;padding:8px;margin-top:5px;border-radius:6px;border:none;">
+        
+        <div style="margin-top:10px;">
+            <strong>Change:</strong> <span id="changeAmount">$0.00</span>
+        </div>
+    </div>
+
+    <!-- CARD QR -->
+    <div id="cardQR" style="display:none; text-align:center; margin-top:20px;">
+        <p>Scan QR to Pay</p>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PizzaPOSPayment" width="200">
+        <br><br>
+        <button onclick="simulateCardPayment()" 
+                style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;">
+            I've Paid
+        </button>
+    </div>
+
+    <div class="payment-actions">
+        <button class="back-btn" onclick="goBack()">⬅ Back</button>
+        <button class="confirm-btn" onclick="confirmCashPayment()">Confirm</button>
+    </div>
+</div>
 
 
 </div>
