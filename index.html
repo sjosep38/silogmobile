@@ -42,7 +42,7 @@ body {
 }
 
 .brand img {
-    width: 45px;
+    width: 4px;
 }
 
 .brand h1 {
@@ -122,9 +122,9 @@ body {
 }
 
 .card {
-    background: #1c1c1c;
+	background: #1c1c1c;
     border-radius: 15px;
-    padding: 15px;
+    padding: 5px;
     transition: 0.3s;
 }
 
@@ -140,7 +140,7 @@ body {
 }
 
 .card h3 {
-    margin: 10px 0;
+    margin: 1px 0;
 }
 
 .card p {
@@ -150,12 +150,12 @@ body {
 
 .card button {
     width: 100%;
-    padding: 8px;
+    padding: 5px;
     background: orange;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 2px;
     font-weight: bold;
 }
 
@@ -506,12 +506,19 @@ function renderCart() {
                     <button onclick="changeQty(${item.id}, -1)">-</button>
                     ${item.qty}
                     <button onclick="changeQty(${item.id}, 1)">+</button>
+                    <button onclick="removeItem(${item.id})">X</button>
                 </div>
             </div>
         `;
     });
 
     updateSummary();
+}
+
+// Function to remove an item entirely
+function removeItem(id) {
+    cart = cart.filter(item => item.id !== id);
+    renderCart();
 }
 
 function changeQty(id, change) {
