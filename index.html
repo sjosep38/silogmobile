@@ -118,7 +118,7 @@ body {
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 10px;
 }
 
 .card {
@@ -415,6 +415,7 @@ body {
                 <div class="category active" onclick="filterCategory('All', event)">All</div>
                 <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
                 <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
+				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
             </div>
 
             <div class="products" id="productList"></div>
@@ -446,7 +447,8 @@ const products = [
     { id: 2, name: "Pepperoni Supreme", price: 14.49, category: "Pizza", image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65" },
     { id: 3, name: "Hawaiian Pizza", price: 13.99, category: "Pizza", image: "https://images.unsplash.com/photo-1548365328-5b8493a1f1ea" },
     { id: 4, name: "Coca Cola", price: 2.99, category: "Drinks", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505" },
-    { id: 5, name: "Orange Juice", price: 3.49, category: "Drinks", image: "https://images.unsplash.com/photo-1600271886742-f049cd5bbaae" }
+	{ id: 5, name: "Coca Cola", price: 2.99, category: "Dessert", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505" },
+    { id: 6, name: "Orange Juice", price: 3.49, category: "Drinks", image: "https://images.unsplash.com/photo-1600271886742-f049cd5bbaae" }
 ];
 
 let cart = [];
