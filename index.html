@@ -117,7 +117,7 @@ body {
 
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px;
 }
 
@@ -165,6 +165,7 @@ body {
 
 /* ================= CART ================= */
 .cart {
+
     flex: 1;
     background: #1a1a1a;
     padding: 10px;
@@ -351,6 +352,9 @@ body {
             <div class="categories">
                 <!--<div class="category active" onclick="filterCategory('All', event)">All</div>-->
                 <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
+                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
+				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
+				                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
                 <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
 				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
             </div>
