@@ -26,12 +26,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
+    height: auto;
     background: #1a1a1a;
     display: flex;
     align-items: center;
-    padding: 0 20px;
-    border-bottom: 1px solid #333;
+    padding: 10px 10px;
+    
     z-index: 1000;
 }
 
@@ -349,7 +349,7 @@ body {
 <div class="header">
     <div class="brand">
             <div class="categories">
-                <div class="category active" onclick="filterCategory('All', event)">All</div>
+                <!--<div class="category active" onclick="filterCategory('All', event)">All</div>-->
                 <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
                 <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
 				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
