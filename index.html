@@ -297,6 +297,48 @@ body {
     border-radius: 8px;
     cursor: pointer;
 }
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media(max-width:1024px){
+    .products{
+        grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    }
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+    body{overflow:auto;}
+
+    .sidebar{
+        display:none;
+    }
+
+    .main-wrapper{
+        flex-direction:column;
+        height:auto;
+    }
+
+    .container{
+        flex-direction:column;
+    }
+
+    .products-section{
+        flex:none;
+        height:auto;
+    }
+
+    .cart{
+        width:100%;
+        height:auto;
+    }
+
+    .products{
+        grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    }
+}
+
 
 </style>
 </head>
