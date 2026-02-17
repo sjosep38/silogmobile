@@ -465,11 +465,13 @@ list.forEach(product => {
             <h5>${product.name}</h5>
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <p>$${product.price.toFixed(2)}</p>
-                <button onclick="addToCart(${product.id})">🛒</button>
+                <i class="fas fa-shopping-cart" 
+                   style="cursor: pointer; font-size: 18px;" 
+                   onclick="addToCart(${product.id})"></i>
             </div>
         </div>
     `;
-});
+});;
 
 }
 
