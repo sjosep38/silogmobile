@@ -345,16 +345,18 @@ body {
 
 <body>
 
-<!-- HEADER
+<!-- HEADER -->
 <div class="header">
     <div class="brand">
-        <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
-        <div>
-            <h1>PizzaHub</h1>
-            <span>Point of Sale System</span>
+            <div class="categories">
+                <div class="category active" onclick="filterCategory('All', event)">All</div>
+                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
+                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
+				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
+            </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="main-wrapper">
 
@@ -370,12 +372,7 @@ body {
         <!-- PRODUCTS -->
         <div class="products-section">
 
-            <div class="categories">
-                <div class="category active" onclick="filterCategory('All', event)">All</div>
-                <div class="category" onclick="filterCategory('Pizza', event)">Pizza</div>
-                <div class="category" onclick="filterCategory('Drinks', event)">Drinks</div>
-				<div class="category" onclick="filterCategory('Dessert', event)">Dessert</div>
-            </div>
+
 
             <div class="products" id="productList"></div>
 
