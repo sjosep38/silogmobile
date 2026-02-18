@@ -746,22 +746,22 @@ function printReceipt(method) {
             <title>Receipt</title>
         </head>
         <body style="font-family:monospace;padding:10px;">
-            <h1>PizzaHub</h1>
+            <h1>Cart Avenue</h1>
             <h2>Date: ${new Date().toLocaleString()}</h2>
             <hr>
-            <h2>  ${itemsHTML}</h2>
+            <h2 style="margin-left:30px;">${itemsHTML}</h2>
             <hr>
             <h2>Total: $${finalTotal.toFixed(2)}</h2>
             <h2>Payment: ${method}</p>
             <hr>
-            <h2>Thank you!</h2>
-			<h2>------------------------------------</h2>
+            <h2><center>Thank you!</center></h2>
+			
         </body>
         </html>
     `);
-
+	receiptWindow.print();
     receiptWindow.document.close();
-    receiptWindow.print();
+    location.reload(); // 🔁 Reload entire system
 }
 
 /* ================= INIT ================= */
