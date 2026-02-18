@@ -746,15 +746,16 @@ function printReceipt(method) {
             <title>Receipt</title>
         </head>
         <body style="font-family:monospace;padding:10px;">
-            <h2>PizzaHub</h2>
-            <p>Date: ${new Date().toLocaleString()}</p>
+            <h1>PizzaHub</h1>
+            <h2>Date: ${new Date().toLocaleString()}</h2>
             <hr>
-            ${itemsHTML}
+            <h2>  ${itemsHTML}</h2>
             <hr>
-            <p>Total: $${finalTotal.toFixed(2)}</p>
-            <p>Payment: ${method}</p>
+            <h2>Total: $${finalTotal.toFixed(2)}</h2>
+            <h2>Payment: ${method}</p>
             <hr>
-            <p>Thank you!</p>
+            <h2>Thank you!</h2>
+			<h2>------------------------------------</h2>
         </body>
         </html>
     `);
