@@ -282,17 +282,19 @@ body {
 <div class="category" onclick="filterCategory('Coffee', event)">Coffee</div>
 <div class="category" onclick="filterCategory('Fried', event)">Fried</div>
 <div class="category" onclick="filterCategory('Silog', event)">Silog</div>
+<div class="category" onclick="filterCategory('Shake', event)">Shake</div>
 </div>
 </div>
 </div>
+
 
 <div class="main-wrapper">
 
-<div class="sidebar">
+<!--<div class="sidebar">
 <div>🍕</div>
 <div>🍔</div>
 <div>🥤</div>
-</div>
+</div>-->
 
 <div class="container">
 
@@ -356,73 +358,152 @@ I've Paid
 </div>
 
 <script>
-/* ================= silog PRODUCTS ================= */
-const TAX_RATE = 0.0;
+/* ================= PRODUCTS ================= */
+const TAX_RATE = 0.05; // 5% tax
 
 const products = [
-{ id: 1, name: "Classic Margherita", price: 12.99, category: "Pizza" },
-{ id: 2, name: "Pepperoni Supreme", price: 14.49, category: "Pizza" },
-{ id: 3, name: "Hawaiian Pizza", price: 13.99, category: "Pizza" },
-{ id: 4, name: "Coca Cola", price: 2.99, category: "Drinks" },
-{ id: 7, name: "Halo-Halo", price: 13.99, category: "Dessert" },
-{ id: 10, name: "Leche Flan", price: 13.99, category: "Dessert" },
-{ id: 5, name: "Pork Silog", price: 12.99, category: "Silog" },
-{ id: 8, name: "Coffee Latte", price: 12.99, category: "Coffee" },
-{ id: 6, name: "Kopiko", price: 2.99, category: "Coffee" },
-{ id: 9, name: "Fried Chicken", price: 8.99, category: "Fried" }
+
+  // PIZZAS
+  { id: 1, name: "Classic Margherita", price: 12.99, category: "Pizza",
+    image:"img/classic-margherita.jpeg" },
+
+  { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza",
+    image:"/Hawaiian-Pizza.jpeg" },
+
+  // DRINKS
+  { id: 3, name: "Coca Cola", price: 2.99, category: "Drinks",
+    image:"img/coca cola.jpeg" },
+
+  // DESSERTS
+  { id: 4, name: "Halo-Halo", price: 13.99, category: "Dessert",
+    image:"img/halo-halo.jpeg" },
+
+  { id: 5, name: "Leche Flan", price: 13.99, category: "Dessert",
+    image:"img/leche-flan.jpeg" },
+
+  // SILOG
+  { id: 6, name: "Pork Silog", price: 12.99, category: "Silog",
+    image:"img/pork-silog.jpeg" },
+
+  // COFFEE
+  { id: 7, name: "Coffee Latte", price: 12.99, category: "Coffee",
+    image:"img/coffee-latte.jpeg" },
+
+  { id: 8, name: "Kopiko", price: 2.99, category: "Coffee",
+    image:"img/kopiko.jpeg" },
+
+  // FRIED
+  { id: 9, name: "Fried Chicken", price: 8.99, category: "Fried",
+    image:"img/fried-chicken.jpeg" },
+
+  // SHAKES
+  { id: 10, name: "Cookies & Cream", price: 2.99, category: "Shake",
+    image:"img/ChocoKisses.jpeg" },
+
+  { id: 11, name: "Choco Kisses", price: 2.99, category: "Shake",
+    image:"img/choco-kisses.jpeg" },
+
+  { id: 12, name: "Chocolate", price: 2.99, category: "Shake",
+    image:"img/chocolate.jpeg" },
+
+  { id: 13, name: "Hot Fudge", price: 2.99, category: "Shake",
+    image:"img/hot-fudge.jpeg" },
+
+  { id: 14, name: "Ube Macapuno", price: 2.99, category: "Shake",
+    image:"img/ube-macapuno.jpeg" },
+
+  { id: 15, name: "Mango", price: 2.99, category: "Shake",
+    image:"img/mango.jpeg" },
+
+  { id: 16, name: "Avocado", price: 2.99, category: "Shake",
+    image:"img/avocado.jpeg" },
+
+  { id: 17, name: "Buko Pandan", price: 2.99, category: "Shake",
+    image:"img/buko-pandan.jpeg" },
+
+  { id: 18, name: "Taro", price: 2.99, category: "Shake",
+    image:"img/taro.jpeg" },
+
+  { id: 19, name: "Strawberry", price: 2.99, category: "Shake",
+    image:"img/strawberry.jpeg" },
+
+  { id: 20, name: "Vanilla", price: 2.99, category: "Shake",
+    image:"img/vanilla.jpeg" },
+
+  { id: 21, name: "Melon", price: 2.99, category: "Shake",
+    image:"img/melon.jpeg" },
+
+  { id: 22, name: "Caramel Macchiato", price: 2.99, category: "Shake",
+    image:"img/caramel-macchiato.jpeg" },
+
+  { id: 23, name: "Black Forest", price: 2.99, category: "Shake",
+    image:"img/Black-Forest.jpeg" },
+
+  { id: 24, name: "Double Dutch", price: 2.99, category: "Shake",
+    image:"img/double-dutch.jpeg" }
 
 ];
 
 let cart = [];
-let selectedPayment = "";
+let selectedPaymentMethod = "";
 let finalTotal = 0;
+let currentCategory = "All";
 
+/* ================= RENDER PRODUCTS ================= */
 function renderProducts(list) {
-const container = document.getElementById("productList");
+    const container = document.getElementById("productList");
 
-container.innerHTML = list.map(product => {
+    container.innerHTML = list.map(product => {
 
-    const cartItem = cart.find(item => item.id === product.id);
-    const qty = cartItem ? cartItem.qty : 0;
+        const cartItem = cart.find(item => item.id === product.id);
+        const qty = cartItem ? cartItem.qty : 0;
 
-    return `
-    <div class="card">
-        <img src="https://via.placeholder.com/150">
-        <h5>${product.name}</h5>
+        return `
+        <div class="card">
+            <img src="${product.image}" 
+                 
+            
+            <h5>${product.name}</h5>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-            <p>₱${product.price.toFixed(2)}</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <p>₱${product.price.toFixed(2)}</p>
 
-            ${
-                qty === 0
-                ? `<i class="fas fa-shopping-cart"
-                      style="cursor:pointer;font-size:22px;"
-                      onclick="addToCart(${product.id})"></i>`
-                : `
-                <div style="display:flex;align-items:center;gap:5px;">
-                    <button onclick="changeQty(${product.id}, -1)"
-                        style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">-</button>
-                    
-                    <span style="min-width:20px;text-align:center;">${qty}</span>
-                    
-                    <button onclick="changeQty(${product.id}, 1)"
-                        style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">+</button>
-                </div>
-                `
-            }
+                ${
+                    qty === 0
+                    ? `<i class="fas fa-shopping-cart"
+                          style="cursor:pointer;font-size:22px;"
+                          onclick="addToCart(${product.id})"></i>`
+                    : `
+                    <div style="display:flex;align-items:center;gap:5px;">
+                        <button onclick="changeQty(${product.id}, -1)"
+                            style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">-</button>
+                        
+                        <span style="min-width:20px;text-align:center;">${qty}</span>
+                        
+                        <button onclick="changeQty(${product.id}, 1)"
+                            style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">+</button>
+                    </div>
+                    `
+                }
+            </div>
         </div>
-    </div>
-    `;
-}).join("");
+        `;
+    }).join("");
 }
-
-
+/* ================= CATEGORY FILTER ================= */
 function filterCategory(category, e) {
+currentCategory = category;
 document.querySelectorAll('.category').forEach(c=>c.classList.remove('active'));
 e.target.classList.add('active');
-renderProducts(category==="All"?products:products.filter(p=>p.category===category));
+
+renderProducts(
+    category==="All"
+    ? products
+    : products.filter(p=>p.category===category)
+);
 }
 
+/* ================= CART FUNCTIONS ================= */
 function addToCart(id){
 const product=products.find(p=>p.id===id);
 const item=cart.find(p=>p.id===id);
@@ -430,39 +511,53 @@ item?item.qty++:cart.push({...product,qty:1});
 renderCart();
 }
 
-function renderCart(){
-    const container=document.getElementById("cartItems");
-    container.innerHTML=cart.map(item=>`
-    <div class="cart-item">
-        <div>${item.name}<br>₱${item.price.toFixed(2)}</div>
-        <div class="qty-control">
-            <button onclick="changeQty(${item.id},-1)">-</button>
-            ${item.qty}
-            <button onclick="changeQty(${item.id},1)">+</button>
-            <button onclick="removeItem(${item.id})">X</button>
-        </div>
-    </div>
-    `).join("");
-
-    updateSummary();
-
-    // 🔥 THIS LINE IS IMPORTANT
-    renderProducts(products);
+function changeQty(id,c){
+const item=cart.find(i=>i.id===id);
+if(!item)return;
+item.qty+=c;
+if(item.qty<=0) removeItem(id);
+else renderCart();
 }
 
+function removeItem(id){
+cart=cart.filter(i=>i.id!==id);
+renderCart();
+}
 
-function removeItem(id){cart=cart.filter(i=>i.id!==id);renderCart();}
-function changeQty(id,c){const item=cart.find(i=>i.id===id);if(!item)return;item.qty+=c;if(item.qty<=0)removeItem(id);else renderCart();}
+function renderCart(){
+const container=document.getElementById("cartItems");
+container.innerHTML=cart.map(item=>`
+<div class="cart-item">
+<div>${item.name}<br>₱${item.price.toFixed(2)}</div>
+<div class="qty-control">
+<button onclick="changeQty(${item.id},-1)">-</button>
+${item.qty}
+<button onclick="changeQty(${item.id},1)">+</button>
+<button onclick="removeItem(${item.id})">X</button>
+</div>
+</div>`).join("");
 
+updateSummary();
+
+renderProducts(
+currentCategory==="All"
+? products
+: products.filter(p=>p.category===currentCategory)
+);
+}
+
+/* ================= SUMMARY ================= */
 function updateSummary(){
 const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
 const tax=subtotal*TAX_RATE;
 finalTotal=subtotal+tax;
+
 document.getElementById("subtotal").innerText=`₱${subtotal.toFixed(2)}`;
 document.getElementById("tax").innerText=`₱${tax.toFixed(2)}`;
 document.getElementById("total").innerText=`₱${finalTotal.toFixed(2)}`;
 }
 
+/* ================= CHECKOUT ================= */
 function checkout(){
 if(cart.length===0)return alert("Cart is empty!");
 document.querySelector(".cart").style.display="none";
@@ -470,29 +565,54 @@ document.getElementById("paymentSection").style.display="flex";
 document.getElementById("paymentTotal").innerText=`₱${finalTotal.toFixed(2)}`;
 }
 
+/* ================= PAYMENT ================= */
 function selectPayment(method,e){
-selectedPayment=method;
-document.querySelectorAll(".payment-methods button").forEach(b=>b.classList.remove("active"));
+selectedPaymentMethod=method;
+document.querySelectorAll(".payment-methods button")
+.forEach(b=>b.classList.remove("active"));
 e.target.classList.add("active");
-document.getElementById("cashForm").style.display=method==="Cash"?"block":"none";
-document.getElementById("cardQR").style.display=method==="Card"?"block":"none";
+
+document.getElementById("cashForm").style.display=
+method==="Cash"?"block":"none";
+
+document.getElementById("cardQR").style.display=
+method==="Card"?"block":"none";
 }
 
+/* Live change calculation */
+document.getElementById("cashInput")
+.addEventListener("input",function(){
+const cash=parseFloat(this.value)||0;
+const change=cash-finalTotal;
+document.getElementById("changeAmount").innerText=
+change>=0?`₱${change.toFixed(2)}`:"₱0.00";
+});
+
 function confirmCashPayment(){
-if(selectedPayment!=="Cash")return alert("Select Cash payment");
+if(selectedPaymentMethod!=="Cash")
+return alert("Select Cash payment");
+
 const cash=parseFloat(document.getElementById("cashInput").value);
-if(!cash||cash<finalTotal)return alert("Insufficient cash");
+if(!cash||cash<finalTotal)
+return alert("Insufficient cash");
+
 completeOrder("Cash");
 }
 
 function simulateCardPayment(){
-if(selectedPayment!=="Card")return alert("Select Card payment");
+if(selectedPaymentMethod!=="Card")
+return alert("Select Card payment");
+
 completeOrder("Card");
 }
 
+/* ================= COMPLETE ORDER ================= */
 function completeOrder(method){
+const orderItems=[...cart];
+
 alert("Payment Successful via "+method);
-printReceipt(method);
+printReceipt(method,orderItems);
+
 cart=[];
 renderCart();
 goBack();
@@ -503,29 +623,39 @@ document.getElementById("paymentSection").style.display="none";
 document.querySelector(".cart").style.display="flex";
 document.getElementById("cashInput").value="";
 document.getElementById("changeAmount").innerText="₱0.00";
-selectedPayment="";
+selectedPaymentMethod="";
 }
 
-function printReceipt(method){
+/* ================= RECEIPT ================= */
+function printReceipt(method,items){
 let receipt=window.open("","","width=300,height=600");
-let items=cart.map(i=>`${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`).join("<br>");
+
+let itemList=items.map(i=>
+`${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`
+).join("<br>");
+
 receipt.document.write(`
-<html><body style="font-family:monospace;padding:10px;">
+<html>
+<body style="font-family:monospace;padding:10px;">
 <h2>Cart Avenue</h2>
 <hr>
-${items}
+${itemList}
 <hr>
 <h3>Total: ₱${finalTotal.toFixed(2)}</h3>
 <h3>Payment: ${method}</h3>
+<h4>${new Date().toLocaleString()}</h4>
 <hr>
 <center>Thank you!</center>
-</body></html>`);
+</body>
+</html>`);
+
 receipt.document.close();
 receipt.print();
 }
 
 renderProducts(products);
 </script>
+
 
 </body>
 </html>
