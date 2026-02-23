@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>Pizza POS System</title>
 
 <style>
@@ -30,9 +29,9 @@ body {
     right: 0;
     height: 60px;
     z-index: 1000;
-    background: #111;
+    background: #fff;
     padding: 10px 0;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px solid #eee;
 }
 
 .brand {
@@ -269,7 +268,6 @@ body {
     .products-section{height:auto;}
 }
 
-
 /* Bottom Navigation Bar */
 .navbar {
     position: fixed;
@@ -292,7 +290,7 @@ body {
     font-size: 0.75rem;
     flex: 1;
     padding-top: 6px;
-    text-decoration: none; /* remove underline by default */
+    text-decoration: none;
     transition: color 0.2s, font-weight 0.2s;
     cursor: pointer;
 }
@@ -319,6 +317,35 @@ body {
 .nav-item.active span {
     transform: scale(1.9); 
 }
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  padding:20px; 
+}
+
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+}
 </style>
 </head>
 
@@ -339,22 +366,44 @@ body {
 </div>
 </div>
 
-
 <div class="main-wrapper">
-
-<div class="sidebar">
-<div>🍕</div>
-<div>🍔</div>
-<div>🥤</div>
-</div
-
 <div class="container">
 
 <div class="products-section">
 <div class="products" id="productList"></div>
 </div>
 
-<div class="cart">
+</div>
+</div>
+
+<nav class="navbar">
+  <a href="https://silogmobile.pages.dev/" class="nav-item" onclick="openModal('homeModal')">
+    🏠 Home
+  </a>
+
+  <a href="#" class="nav-item" onclick="openModal('logsModal')">
+    📄 Cart
+  </a>
+
+  <a href="#" class="nav-item" onclick="PaymentModal()">
+  
+    ⚙️ Settings
+  </a>
+
+  <a href="#" class="nav-item" onclick="openModal('graphModal')">
+    📊 Graph
+  </a>
+
+  <a href="#" class="nav-item" onclick="openModal('reportModal')">
+    📝 Report
+  </a>
+</nav>
+
+<!-- LOGS MODAL -->
+<div id="logsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('logsModal')">&times;</span>
+    <div class="cart">
 <h2>Cart</h2>
 <div class="cart-items" id="cartItems"></div>
 
@@ -364,14 +413,18 @@ body {
 <div><strong>Total</strong><strong id="total">₱0.00</strong></div>
 </div>
 
-<button class="checkout-btn" onclick="checkout()">Proceed</button>
+<button class="checkout-btn" onclick="PaymentModal()">Proceed</button>
+</div>
+  </div>
 </div>
 
-</div>
-
+<!-- PAYMENT MODAL -->
+<div id="PaymentModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('PaymentModal')">&times;</span>
 <div class="payment" id="paymentSection" style="display:none;">
 <h2>Payment</h2>
-
+<div class="cart-items" id="cartItems"></div>
 <div class="payment-total">
 <h3>Total Amount</h3>
 <h1 id="paymentTotal">₱0.00</h1>
@@ -406,7 +459,7 @@ I've Paid
 <button class="confirm-btn" onclick="confirmCashPayment()">Confirm</button>
 </div>
 </div>
-
+  </div>
 </div>
 
 <script>
@@ -420,7 +473,7 @@ const products = [
     image:"img/classic-margherita.jpeg" },
 
   { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza",
-    image:"/Hawaiian-Pizza.jpeg" },
+    image:"img/Hawaiian-Pizza.jpeg" },
 
   // DRINKS
   { id: 3, name: "Coca Cola", price: 2.99, category: "Drinks",
@@ -512,14 +565,10 @@ function renderProducts(list) {
 
         return `
         <div class="card">
-            <img src="${product.image}" 
-                 
-            
+            <img src="${product.image}" alt="${product.name}">
             <h5>${product.name}</h5>
-
             <div style="display:flex;justify-content:space-between;align-items:center;">
                 <p>₱${product.price.toFixed(2)}</p>
-
                 ${
                     qty === 0
                     ? `<i class="fas fa-shopping-cart"
@@ -529,9 +578,7 @@ function renderProducts(list) {
                     <div style="display:flex;align-items:center;gap:5px;">
                         <button onclick="changeQty(${product.id}, -1)"
                             style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">-</button>
-                        
                         <span style="min-width:20px;text-align:center;">${qty}</span>
-                        
                         <button onclick="changeQty(${product.id}, 1)"
                             style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">+</button>
                     </div>
@@ -542,6 +589,7 @@ function renderProducts(list) {
         `;
     }).join("");
 }
+
 /* ================= CATEGORY FILTER ================= */
 function filterCategory(category, e) {
 currentCategory = category;
@@ -609,12 +657,21 @@ document.getElementById("tax").innerText=`₱${tax.toFixed(2)}`;
 document.getElementById("total").innerText=`₱${finalTotal.toFixed(2)}`;
 }
 
-/* ================= CHECKOUT ================= */
-function checkout(){
-if(cart.length===0)return alert("Cart is empty!");
-document.querySelector(".cart").style.display="none";
+/* ================= PAYMENT MODAL ================= */
+function PaymentModal(){
+
+if(cart.length===0){
+alert("Cart is empty!");
+return;
+}
+
+openModal("PaymentModal");
+
 document.getElementById("paymentSection").style.display="flex";
-document.getElementById("paymentTotal").innerText=`₱${finalTotal.toFixed(2)}`;
+
+document.getElementById("paymentTotal")
+.innerText=`₱${finalTotal.toFixed(2)}`;
+
 }
 
 /* ================= PAYMENT ================= */
@@ -631,15 +688,23 @@ document.getElementById("cardQR").style.display=
 method==="Card"?"block":"none";
 }
 
-/* Live change calculation */
-document.getElementById("cashInput")
-.addEventListener("input",function(){
+/* ================= CASH CHANGE ================= */
+setTimeout(()=>{
+
+const cashInput=document.getElementById("cashInput");
+
+if(cashInput){
+cashInput.addEventListener("input",function(){
 const cash=parseFloat(this.value)||0;
 const change=cash-finalTotal;
 document.getElementById("changeAmount").innerText=
 change>=0?`₱${change.toFixed(2)}`:"₱0.00";
 });
+}
 
+},500);
+
+/* ================= CONFIRM PAYMENT ================= */
 function confirmCashPayment(){
 if(selectedPaymentMethod!=="Cash")
 return alert("Select Cash payment");
@@ -671,8 +736,8 @@ goBack();
 }
 
 function goBack(){
+closeModal("PaymentModal");
 document.getElementById("paymentSection").style.display="none";
-document.querySelector(".cart").style.display="flex";
 document.getElementById("cashInput").value="";
 document.getElementById("changeAmount").innerText="₱0.00";
 selectedPaymentMethod="";
@@ -705,9 +770,26 @@ receipt.document.close();
 receipt.print();
 }
 
+/* ================= RENDER INIT ================= */
 renderProducts(products);
-</script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+/* ================= MODAL ================= */
+function openModal(id){
+  document.querySelectorAll('.modal')
+  .forEach(modal => modal.style.display = "none");
+  document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id){
+  document.getElementById(id).style.display = "none";
+}
+
+// close when clicking outside
+window.onclick = function(event){
+  if(event.target.classList.contains("modal")){
+      event.target.style.display="none";
+  }
+}
+</script>
 </body>
 </html>
