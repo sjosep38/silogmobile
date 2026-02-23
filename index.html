@@ -379,9 +379,6 @@ align-items: CENTER;
 </div>
 
 </div>
-<br>
-<br>
-	<br>
 </div>
 
 <nav class="navbar">
@@ -437,6 +434,7 @@ align-items: CENTER;
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
 <button onclick="selectPayment('Card', event)">💳 Card</button>
 </div>
+<div class="cart-items" id="paymentCartItems"></div>
 <div class="payment-total">
 <h3>Total Amount</h3>
 <h1 id="paymentTotal">₱0.00</h1>
@@ -613,7 +611,7 @@ return;
 openModal("PaymentModal");
 
 document.getElementById("paymentSection").style.display="flex";
-document.getElementById("paymentCartItems").innerHTML=document.getElementById("cartItems").innerHTML;
+/*document.getElementById("paymentCartItems").innerHTML=document.getElementById("cartItems").innerHTML;*/
 document.getElementById("paymentTotal").innerText=`₱${finalTotal.toFixed(2)}`;
 
 // Reset payment
@@ -689,27 +687,63 @@ selectedPaymentMethod="";
 }
 
 /* ================= RECEIPT ================= */
-function printReceipt(method,items,total){
-let receipt=window.open("","","width=300,height=600");
-let itemList=items.map(i=>`${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`).join("<br>");
-receipt.document.write(`
-<html>
-<body style="font-family:monospace;padding:10px;">
-<h2>Cart Avenue</h2>
-<hr>
-${itemList}
-<hr>
-<h3>Total: ₱${total.toFixed(2)}</h3>
-<h3>Payment: ${method}</h3>
-<h4>${new Date().toLocaleString()}</h4>
-<hr>
-<center>Thank you!</center>
-</body>
-</html>`);
-receipt.document.close();
-receipt.print();
+function completeOrder(method, total) {
+    if(cart.length === 0) return;
+
+    const orderItems = [...cart];
+
+    // Close modal first to prevent overlay issues
+    closeModal('PaymentModal');
+
+    // Delay printing slightly to ensure modal is closed
+    setTimeout(() => {
+        printReceipt(method, orderItems, total);
+    }, 100);
+
+    // Clear cart
+    cart = [];
+    renderCart();
 }
 
+function printReceipt(method, items, total) {
+    const receipt = window.open('', '', 'width=300,height=600');
+    if(!receipt) {
+        alert('Popup blocked! Please allow popups for this site.');
+        return;
+    }
+
+    const itemList = items.map(i => `${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`).join('<br>');
+
+    receipt.document.write(`
+        <html>
+        <head>
+            <title>Receipt</title>
+            <style>
+                body { font-family: monospace; padding: 10px; }
+                h2,h3,h4 { margin: 5px 0; }
+                hr { border: 1px dashed #000; }
+                center { margin-top: 10px; }
+            </style>
+        </head>
+        <body>
+            <h2>Cart Avenue</h2>
+            <hr>
+            ${itemList}
+            <hr>
+            <h3>Total: ₱${total.toFixed(2)}</h3>
+            <h3>Payment: ${method}</h3>
+            <h4>${new Date().toLocaleString()}</h4>
+            <hr>
+            <center>Thank you!</center>
+        </body>
+        </html>
+    `);
+
+    receipt.document.close();
+    receipt.focus(); // Focus is required for some browsers
+    receipt.print();
+    receipt.close();
+}
 /* ================= MODAL ================= */
 function openModal(id){
   document.querySelectorAll('.modal').forEach(modal => modal.style.display = "none");
@@ -805,5 +839,3 @@ function goBack() {
 </script>
 </body>
 </html>
-
-
