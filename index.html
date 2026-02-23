@@ -29,9 +29,9 @@ body {
     right: 0;
     height: 60px;
     z-index: 1000;
-    background: #fff;
+    background: black;
     padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid black;
 }
 
 .brand {
@@ -331,9 +331,9 @@ body {
 }
 
 .modal-content {
-  background: white;
- margin-top: 20px;
-  padding: 30px;
+  background: BLACK;
+ margin-top: 50px;
+margin-left: 15PX;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -343,6 +343,7 @@ body {
   float: right;
   font-size: 25px;
   cursor: pointer;
+  color: BLACK;
 }
 </style>
 </head>
@@ -376,25 +377,25 @@ body {
 
 <nav class="navbar">
   <a href="https://silogmobile.pages.dev/" class="nav-item" onclick="openModal('homeModal')">
-    🏠 Home
+    🏠 HOME
   </a>
 
   <a href="#" class="nav-item" onclick="openModal('logsModal')">
-    📄 Cart
+    📄 CART
   </a>
 
   <a href="#" class="nav-item" onclick="PaymentModal()">
   
-    ⚙️ Settings
+    ⚙️ PAY NOW
   </a>
-
+<!--
   <a href="#" class="nav-item" onclick="openModal('graphModal')">
     📊 Graph
   </a>
 
   <a href="#" class="nav-item" onclick="openModal('reportModal')">
     📝 Report
-  </a>
+  </a>-->
 </nav>
 
 <!-- LOGS MODAL -->
@@ -467,7 +468,7 @@ const TAX_RATE = 0.05; // 5% tax
 const products = [
   { id: 1, name: "Classic Margherita", price: 12.99, category: "Pizza", image:"img/classic-margherita.jpeg" },
   { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza", image:"img/Hawaiian-Pizza.jpeg" },
-  { id: 3, name: "Coca Cola", price: 2.99, category: "Drinks", image:"img/coca cola.jpeg" },
+  { id: 3, name: "Coca Cola", price: 2.99, category: "Drinks", image:"img/cocacola.PNG" },
   { id: 4, name: "Halo-Halo", price: 13.99, category: "Dessert", image:"img/halo-halo.jpeg" },
   { id: 5, name: "Leche Flan", price: 13.99, category: "Dessert", image:"img/leche-flan.jpeg" },
   { id: 6, name: "Pork Silog", price: 12.99, category: "Silog", image:"img/pork-silog.jpeg" },
