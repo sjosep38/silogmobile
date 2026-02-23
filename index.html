@@ -29,9 +29,9 @@ body {
     right: 0;
     height: 60px;
     z-index: 1000;
-    background: #fff;
+    background: black;
     padding: 10px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid Black;
 }
 
 .brand {
@@ -267,11 +267,83 @@ body {
     .container{flex-direction:column;}
     .products-section{height:auto;}
 }
+
+
+/* Bottom Navigation Bar */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 62px;
+    background: #161b22;
+    border-top: 1px solid #2a2f38;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Navigation Item */
+.nav-item {
+    text-align: center;
+    color: var(--muted, #8b95a1);
+    font-size: 0.75rem;
+    flex: 1;
+    padding-top: 6px;
+    text-decoration: none; /* remove underline by default */
+    transition: color 0.2s, font-weight 0.2s;
+    cursor: pointer;
+}
+
+/* Icon or span inside nav item */
+.nav-item span {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+    transition: transform 0.2s;
+}
+
+.nav-item:hover span {
+    transform: scale(1.1);
+}
+
+/* Active nav item */
+.nav-item.active {
+    color: var(--accent, #58a6ff);
+    font-weight: bold;
+    text-decoration: underline; 
+}
+
+.nav-item.active span {
+    transform: scale(1.9); 
+}
 </style>
 </head>
 
 <body>
-
+<nav class="navbar">
+  <a href="/" class="nav-item">
+    <span>🏠</span>
+    Home
+  </a>
+  <a href="/logs" class="nav-item">
+    <span>📄</span>
+    Logs
+  </a>
+  <a href="/settings" class="nav-item">
+    <span>⚙️</span>
+    Settings
+  </a>
+  <a href="/graph" class="nav-item">
+    <span>📊</span>
+    Graph
+  </a>
+  <a href="report" class="nav-item">
+    <span>📝</span>
+    Report
+  </a>
+</nav>
 <div class="header">
 <div class="brand">
 <div class="categories">
