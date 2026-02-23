@@ -318,7 +318,6 @@ body {
     transform: scale(1.9); 
 }
 
-
 .modal {
   display: none;
   position: fixed;
@@ -334,7 +333,7 @@ body {
 .modal-content {
   background: white;
   margin: 8% auto;
-  padding: 20px;
+  padding: 5px;
   width: 100%;
   border-radius: 10px;
   height: 100%;
@@ -424,7 +423,7 @@ body {
     <span class="close" onclick="closeModal('PaymentModal')">&times;</span>
 <div class="payment" id="paymentSection" style="display:none;">
 <h2>Payment</h2>
-<div class="cart-items" id="cartItems"></div>
+<div class="cart-items" id="paymentCartItems"></div>
 <div class="payment-total">
 <h3>Total Amount</h3>
 <h1 id="paymentTotal">₱0.00</h1>
@@ -467,86 +466,30 @@ I've Paid
 const TAX_RATE = 0.05; // 5% tax
 
 const products = [
-
-  // PIZZAS
-  { id: 1, name: "Classic Margherita", price: 12.99, category: "Pizza",
-    image:"img/classic-margherita.jpeg" },
-
-  { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza",
-    image:"img/Hawaiian-Pizza.jpeg" },
-
-  // DRINKS
-  { id: 3, name: "Coca Cola", price: 2.99, category: "Drinks",
-    image:"img/coca cola.jpeg" },
-
-  // DESSERTS
-  { id: 4, name: "Halo-Halo", price: 13.99, category: "Dessert",
-    image:"img/halo-halo.jpeg" },
-
-  { id: 5, name: "Leche Flan", price: 13.99, category: "Dessert",
-    image:"img/leche-flan.jpeg" },
-
-  // SILOG
-  { id: 6, name: "Pork Silog", price: 12.99, category: "Silog",
-    image:"img/pork-silog.jpeg" },
-
-  // COFFEE
-  { id: 7, name: "Coffee Latte", price: 12.99, category: "Coffee",
-    image:"img/coffee-latte.jpeg" },
-
-  { id: 8, name: "Kopiko", price: 2.99, category: "Coffee",
-    image:"img/kopiko.jpeg" },
-
-  // FRIED
-  { id: 9, name: "Fried Chicken", price: 8.99, category: "Fried",
-    image:"img/fried-chicken.jpeg" },
-
-  // SHAKES
-  { id: 10, name: "Cookies & Cream", price: 2.99, category: "Shake",
-    image:"img/ChocoKisses.jpeg" },
-
-  { id: 11, name: "Choco Kisses", price: 2.99, category: "Shake",
-    image:"img/choco-kisses.jpeg" },
-
-  { id: 12, name: "Chocolate", price: 2.99, category: "Shake",
-    image:"img/chocolate.jpeg" },
-
-  { id: 13, name: "Hot Fudge", price: 2.99, category: "Shake",
-    image:"img/hot-fudge.jpeg" },
-
-  { id: 14, name: "Ube Macapuno", price: 2.99, category: "Shake",
-    image:"img/ube-macapuno.jpeg" },
-
-  { id: 15, name: "Mango", price: 2.99, category: "Shake",
-    image:"img/mango.jpeg" },
-
-  { id: 16, name: "Avocado", price: 2.99, category: "Shake",
-    image:"img/avocado.jpeg" },
-
-  { id: 17, name: "Buko Pandan", price: 2.99, category: "Shake",
-    image:"img/buko-pandan.jpeg" },
-
-  { id: 18, name: "Taro", price: 2.99, category: "Shake",
-    image:"img/taro.jpeg" },
-
-  { id: 19, name: "Strawberry", price: 2.99, category: "Shake",
-    image:"img/strawberry.jpeg" },
-
-  { id: 20, name: "Vanilla", price: 2.99, category: "Shake",
-    image:"img/vanilla.jpeg" },
-
-  { id: 21, name: "Melon", price: 2.99, category: "Shake",
-    image:"img/melon.jpeg" },
-
-  { id: 22, name: "Caramel Macchiato", price: 2.99, category: "Shake",
-    image:"img/caramel-macchiato.jpeg" },
-
-  { id: 23, name: "Black Forest", price: 2.99, category: "Shake",
-    image:"img/Black-Forest.jpeg" },
-
-  { id: 24, name: "Double Dutch", price: 2.99, category: "Shake",
-    image:"img/double-dutch.jpeg" }
-
+  { id: 1, name: "Classic Margherita", price: 12.99, category: "Pizza", image:"img/classic-margherita.jpeg" },
+  { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza", image:"img/Hawaiian-Pizza.jpeg" },
+  { id: 3, name: "Coca Cola", price: 2.99, category: "Drinks", image:"img/coca cola.jpeg" },
+  { id: 4, name: "Halo-Halo", price: 13.99, category: "Dessert", image:"img/halo-halo.jpeg" },
+  { id: 5, name: "Leche Flan", price: 13.99, category: "Dessert", image:"img/leche-flan.jpeg" },
+  { id: 6, name: "Pork Silog", price: 12.99, category: "Silog", image:"img/pork-silog.jpeg" },
+  { id: 7, name: "Coffee Latte", price: 12.99, category: "Coffee", image:"img/coffee-latte.jpeg" },
+  { id: 8, name: "Kopiko", price: 2.99, category: "Coffee", image:"img/kopiko.jpeg" },
+  { id: 9, name: "Fried Chicken", price: 8.99, category: "Fried", image:"img/fried-chicken.jpeg" },
+  { id: 10, name: "Cookies & Cream", price: 2.99, category: "Shake", image:"img/ChocoKisses.jpeg" },
+  { id: 11, name: "Choco Kisses", price: 2.99, category: "Shake", image:"img/choco-kisses.jpeg" },
+  { id: 12, name: "Chocolate", price: 2.99, category: "Shake", image:"img/chocolate.jpeg" },
+  { id: 13, name: "Hot Fudge", price: 2.99, category: "Shake", image:"img/hot-fudge.jpeg" },
+  { id: 14, name: "Ube Macapuno", price: 2.99, category: "Shake", image:"img/ube-macapuno.jpeg" },
+  { id: 15, name: "Mango", price: 2.99, category: "Shake", image:"img/mango.jpeg" },
+  { id: 16, name: "Avocado", price: 2.99, category: "Shake", image:"img/avocado.jpeg" },
+  { id: 17, name: "Buko Pandan", price: 2.99, category: "Shake", image:"img/buko-pandan.jpeg" },
+  { id: 18, name: "Taro", price: 2.99, category: "Shake", image:"img/taro.jpeg" },
+  { id: 19, name: "Strawberry", price: 2.99, category: "Shake", image:"img/strawberry.jpeg" },
+  { id: 20, name: "Vanilla", price: 2.99, category: "Shake", image:"img/vanilla.jpeg" },
+  { id: 21, name: "Melon", price: 2.99, category: "Shake", image:"img/melon.jpeg" },
+  { id: 22, name: "Caramel Macchiato", price: 2.99, category: "Shake", image:"img/caramel-macchiato.jpeg" },
+  { id: 23, name: "Black Forest", price: 2.99, category: "Shake", image:"img/Black-Forest.jpeg" },
+  { id: 24, name: "Double Dutch", price: 2.99, category: "Shake", image:"img/double-dutch.jpeg" }
 ];
 
 let cart = [];
@@ -557,12 +500,9 @@ let currentCategory = "All";
 /* ================= RENDER PRODUCTS ================= */
 function renderProducts(list) {
     const container = document.getElementById("productList");
-
     container.innerHTML = list.map(product => {
-
         const cartItem = cart.find(item => item.id === product.id);
         const qty = cartItem ? cartItem.qty : 0;
-
         return `
         <div class="card">
             <img src="${product.image}" alt="${product.name}">
@@ -659,50 +599,48 @@ document.getElementById("total").innerText=`₱${finalTotal.toFixed(2)}`;
 
 /* ================= PAYMENT MODAL ================= */
 function PaymentModal(){
-
 if(cart.length===0){
 alert("Cart is empty!");
 return;
 }
-
 openModal("PaymentModal");
 
 document.getElementById("paymentSection").style.display="flex";
+document.getElementById("paymentCartItems").innerHTML=document.getElementById("cartItems").innerHTML;
+document.getElementById("paymentTotal").innerText=`₱${finalTotal.toFixed(2)}`;
 
-document.getElementById("paymentTotal")
-.innerText=`₱${finalTotal.toFixed(2)}`;
+// Reset payment
+selectedPaymentMethod="";
+document.getElementById("cashForm").style.display="none";
+document.getElementById("cardQR").style.display="none";
+document.querySelectorAll(".payment-methods button").forEach(b=>b.classList.remove("active"));
+document.getElementById("cashInput").value="";
+document.getElementById("changeAmount").innerText="₱0.00";
 
+// Add cash input listener
+const cashInput=document.getElementById("cashInput");
+cashInput.oninput=function(){
+    const cash=parseFloat(this.value)||0;
+    const change=cash-finalTotal;
+    document.getElementById("changeAmount").innerText=change>=0?`₱${change.toFixed(2)}`:"₱0.00";
+};
 }
 
 /* ================= PAYMENT ================= */
 function selectPayment(method,e){
 selectedPaymentMethod=method;
-document.querySelectorAll(".payment-methods button")
-.forEach(b=>b.classList.remove("active"));
+document.querySelectorAll(".payment-methods button").forEach(b=>b.classList.remove("active"));
 e.target.classList.add("active");
 
-document.getElementById("cashForm").style.display=
-method==="Cash"?"block":"none";
+document.getElementById("cashForm").style.display= method==="Cash"?"block":"none";
+document.getElementById("cardQR").style.display= method==="Card"?"block":"none";
 
-document.getElementById("cardQR").style.display=
-method==="Card"?"block":"none";
+// reset inputs
+if(method==="Cash"){
+document.getElementById("cashInput").value="";
+document.getElementById("changeAmount").innerText="₱0.00";
 }
-
-/* ================= CASH CHANGE ================= */
-setTimeout(()=>{
-
-const cashInput=document.getElementById("cashInput");
-
-if(cashInput){
-cashInput.addEventListener("input",function(){
-const cash=parseFloat(this.value)||0;
-const change=cash-finalTotal;
-document.getElementById("changeAmount").innerText=
-change>=0?`₱${change.toFixed(2)}`:"₱0.00";
-});
 }
-
-},500);
 
 /* ================= CONFIRM PAYMENT ================= */
 function confirmCashPayment(){
@@ -713,22 +651,22 @@ const cash=parseFloat(document.getElementById("cashInput").value);
 if(!cash||cash<finalTotal)
 return alert("Insufficient cash");
 
-completeOrder("Cash");
+completeOrder("Cash", finalTotal);
 }
 
 function simulateCardPayment(){
 if(selectedPaymentMethod!=="Card")
 return alert("Select Card payment");
 
-completeOrder("Card");
+completeOrder("Card", finalTotal);
 }
 
 /* ================= COMPLETE ORDER ================= */
-function completeOrder(method){
+function completeOrder(method, total){
 const orderItems=[...cart];
 
 alert("Payment Successful via "+method);
-printReceipt(method,orderItems);
+printReceipt(method,orderItems,total);
 
 cart=[];
 renderCart();
@@ -744,13 +682,9 @@ selectedPaymentMethod="";
 }
 
 /* ================= RECEIPT ================= */
-function printReceipt(method,items){
+function printReceipt(method,items,total){
 let receipt=window.open("","","width=300,height=600");
-
-let itemList=items.map(i=>
-`${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`
-).join("<br>");
-
+let itemList=items.map(i=>`${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`).join("<br>");
 receipt.document.write(`
 <html>
 <body style="font-family:monospace;padding:10px;">
@@ -758,25 +692,20 @@ receipt.document.write(`
 <hr>
 ${itemList}
 <hr>
-<h3>Total: ₱${finalTotal.toFixed(2)}</h3>
+<h3>Total: ₱${total.toFixed(2)}</h3>
 <h3>Payment: ${method}</h3>
 <h4>${new Date().toLocaleString()}</h4>
 <hr>
 <center>Thank you!</center>
 </body>
 </html>`);
-
 receipt.document.close();
 receipt.print();
 }
 
-/* ================= RENDER INIT ================= */
-renderProducts(products);
-
 /* ================= MODAL ================= */
 function openModal(id){
-  document.querySelectorAll('.modal')
-  .forEach(modal => modal.style.display = "none");
+  document.querySelectorAll('.modal').forEach(modal => modal.style.display = "none");
   document.getElementById(id).style.display = "block";
 }
 
@@ -790,6 +719,9 @@ window.onclick = function(event){
       event.target.style.display="none";
   }
 }
+
+/* ================= INIT ================= */
+renderProducts(products);
 </script>
 </body>
 </html>
