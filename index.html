@@ -327,15 +327,14 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.6);
-  padding:20px; 
+ 
 }
 
 .modal-content {
   background: white;
-  margin: 8% auto;
-  padding: 5px;
+ margin-top: 20px;
+  padding: 30px;
   width: 100%;
-  border-radius: 10px;
   height: 100%;
   overflow-y: auto;
 }
@@ -454,7 +453,7 @@ I've Paid
 </div>
 
 <div class="payment-actions">
-<button class="back-btn" onclick="goBack()">⬅ Back</button>
+<button class="back-btn" onclick="goBack()">⬅ Dashboard</button>
 <button class="confirm-btn" onclick="confirmCashPayment()">Confirm</button>
 </div>
 </div>
@@ -473,15 +472,15 @@ const products = [
   { id: 5, name: "Leche Flan", price: 13.99, category: "Dessert", image:"img/leche-flan.jpeg" },
   { id: 6, name: "Pork Silog", price: 12.99, category: "Silog", image:"img/pork-silog.jpeg" },
   { id: 7, name: "Coffee Latte", price: 12.99, category: "Coffee", image:"img/coffee-latte.jpeg" },
-  { id: 8, name: "Kopiko", price: 2.99, category: "Coffee", image:"img/kopiko.jpeg" },
+  { id: 8, name: "Kopiko", price: 2.99, category: "Coffee", image:"img/classic-margherita.jpeg" },
   { id: 9, name: "Fried Chicken", price: 8.99, category: "Fried", image:"img/fried-chicken.jpeg" },
   { id: 10, name: "Cookies & Cream", price: 2.99, category: "Shake", image:"img/ChocoKisses.jpeg" },
   { id: 11, name: "Choco Kisses", price: 2.99, category: "Shake", image:"img/choco-kisses.jpeg" },
   { id: 12, name: "Chocolate", price: 2.99, category: "Shake", image:"img/chocolate.jpeg" },
   { id: 13, name: "Hot Fudge", price: 2.99, category: "Shake", image:"img/hot-fudge.jpeg" },
   { id: 14, name: "Ube Macapuno", price: 2.99, category: "Shake", image:"img/ube-macapuno.jpeg" },
-  { id: 15, name: "Mango", price: 2.99, category: "Shake", image:"img/mango.jpeg" },
-  { id: 16, name: "Avocado", price: 2.99, category: "Shake", image:"img/avocado.jpeg" },
+  { id: 15, name: "Mango", price: 2.99, category: "Shake", image:"img/classic-margherita.jpeg" },
+  { id: 16, name: "Avocado", price: 2.99, category: "Shake", image:"img/classic-margherita.jpeg" },
   { id: 17, name: "Buko Pandan", price: 2.99, category: "Shake", image:"img/buko-pandan.jpeg" },
   { id: 18, name: "Taro", price: 2.99, category: "Shake", image:"img/taro.jpeg" },
   { id: 19, name: "Strawberry", price: 2.99, category: "Shake", image:"img/strawberry.jpeg" },
@@ -489,7 +488,7 @@ const products = [
   { id: 21, name: "Melon", price: 2.99, category: "Shake", image:"img/melon.jpeg" },
   { id: 22, name: "Caramel Macchiato", price: 2.99, category: "Shake", image:"img/caramel-macchiato.jpeg" },
   { id: 23, name: "Black Forest", price: 2.99, category: "Shake", image:"img/Black-Forest.jpeg" },
-  { id: 24, name: "Double Dutch", price: 2.99, category: "Shake", image:"img/double-dutch.jpeg" }
+  { id: 24, name: "Double Dutch", price: 2.99, category: "Shake", image:"img/classic-margherita.jpeg" }
 ];
 
 let cart = [];
